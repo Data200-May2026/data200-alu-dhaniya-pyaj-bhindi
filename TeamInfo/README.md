@@ -7,8 +7,8 @@
 
 ### Team Members
 1. *Krish Naga (nagaakrish)*
-2. *Aryan Ghimire(GitHub Username)*
-3. *Sulav Shrestha (GitHub Username)*
+2. *Aryan Ghimire(franketstein1)*
+3. *Sulav Ghimire (sulav-ghimire)*
 
 ### Task Division
 - **Member 1**: *Describe tasks assigned (e.g., data analysis and EDA)*
