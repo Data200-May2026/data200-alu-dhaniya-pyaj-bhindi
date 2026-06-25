@@ -4,9 +4,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from pathlib import Path
 
-# -----------------------------
+
 # Load Dataset
-# -----------------------------
+
 BASE_DIR = Path(__file__).resolve().parent
 DATA_PATH = BASE_DIR / "companies" / "NEPSE_Cleaned.csv"
 
@@ -14,9 +14,9 @@ df = pd.read_csv(DATA_PATH)
 
 df["Date"] = pd.to_datetime(df["Date"])
 
-# -----------------------------
+
 # Create Target Variable
-# -----------------------------
+
 df = df.sort_values(["Company", "Date"])
 
 df["Next_Close"] = df.groupby("Company")["Close"].shift(-1)
@@ -25,9 +25,9 @@ df = df.dropna(subset=["Next_Close"])
 
 df["Movement"] = (df["Next_Close"] > df["Close"]).astype(int)
 
-# -----------------------------
+
 # Features
-# -----------------------------
+
 features = [
     "Open",
     "High",
@@ -53,10 +53,9 @@ model = LogisticRegression(
 
 model.fit(X_scaled, y)
 
-# -----------------------------
 # Streamlit UI
-# -----------------------------
-st.title("📈 NEPSE Stock Movement Prediction")
+
+st.title("NEPSE Stock Movement Prediction")
 
 st.write(
     "Select a company and trading date to predict whether the next day's stock price will increase or decrease."
@@ -120,9 +119,9 @@ if st.button("Predict Next Day Movement"):
     st.divider()
 
     if prediction == 1:
-        st.success("📈 Prediction: Stock price is likely to Increase")
+        st.success("Prediction: Stock price is likely to Increase")
     else:
-        st.error("📉 Prediction: Stock price is likely to Decrease")
+        st.error("Prediction: Stock price is likely to Decrease")
 
     st.write(f"**Probability of Increase:** {probability[1]*100:.2f}%")
     st.write(f"**Probability of Decrease:** {probability[0]*100:.2f}%")
